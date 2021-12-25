@@ -14,7 +14,7 @@ int ft_get_time(void)
 void    ft_time(int time)
 {
     long long	cur;
-    long long res;
+    long long   res;
 
     res = 0;
     cur = ft_get_time();

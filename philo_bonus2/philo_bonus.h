@@ -51,6 +51,7 @@ typedef struct 	s_qw
 	sem_t   	*forks;
 	sem_t   	*print;
 	sem_t       *died;
+	sem_t		*finish;
 	t_phil      *ptr;
 
 }   			t_qw;
@@ -60,7 +61,7 @@ void    ft_time(int time);
 void	p_error(char c);
 void	ft_end_init(int ac, char **av, t_qw *qw, int i);
 void    ft_create_process(t_qw *qw);
-void    ft_process(t_phil *ph);
+void    *ft_process(t_phil *ph);
 void    kill_process(t_qw *g);
 void    sleep_think(t_phil *ph);
 void    eat(t_phil *ph);

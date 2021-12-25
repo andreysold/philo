@@ -11,13 +11,14 @@ void    *ft_monitor(void *arg)
         {
             sem_wait(ph->act->died);
             printf(DEAD, ft_get_time() - ph->run_pr, ph->id);
-            exit (-1);
+            sem_post(ph->act->finish);
         }
         if (ph->last_eat != 0 && ft_get_time() - ph->last_eat > ph->live_time)
         {
             sem_wait(ph->act->died);
             printf(DEAD, ft_get_time() - ph->run_pr, ph->id);
-            exit (0);
+            ph->act->dead = -1;
+            sem_post(ph->act->finish);
         }
     }
     return (NULL);
@@ -28,7 +29,6 @@ void    eat(t_phil *ph)
     sem_wait(ph->act->forks);
     sem_wait(ph->act->print);
     printf(R_FORK, ft_get_time() - ph->run_pr, ph->id);
-    sem_post(ph->act->print);
     sem_post(ph->act->print);
     sem_wait(ph->act->forks);
     printf(L_FORK, ft_get_time() - ph->run_pr, ph->id);
@@ -57,7 +57,7 @@ void    sleep_think(t_phil *ph)
     sem_post(ph->act->print);
 }
 
-void    ft_process(t_phil *ph)
+void    *ft_process(t_phil *ph)
 {
     pthread_t monitoring;
 
@@ -69,7 +69,8 @@ void    ft_process(t_phil *ph)
         eat(ph);
         sleep_think(ph);
     }
-    exit (-1);
+    sem_post(ph->act->finish);
+    return (NULL);
 }
 
 void    ft_create_process(t_qw *qw)
@@ -83,8 +84,10 @@ void    ft_create_process(t_qw *qw)
         qw->ptr[i].run_pr = qw->run_pr;
         qw->ptr[i].last_eat = qw->ptr[i].run_pr;
         qw->ptr[i].pid = fork();
-        if (qw->ptr[i].pid == 0)
+        if (qw->ptr[i].pid == 0) {
             ft_process(&qw->ptr[i]);
+            exit (0);
+        }
         else if (qw->ptr[i].pid < 0)
             exit (0);
         i++;

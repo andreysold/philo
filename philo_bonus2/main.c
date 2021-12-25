@@ -1,5 +1,17 @@
 #include "philo_bonus.h"
 
+
+void	ft_clear(t_qw **qw)
+{
+	free((*qw)->ptr);
+	free (*qw);
+	sem_unlink("/forkk");
+	sem_unlink("/print");
+	sem_unlink("/died");
+	sem_close((*qw)->forks);
+	sem_close((*qw)->print);
+	sem_close((*qw)->died);
+}
 int main(int ac, char **av)
 {
 	t_qw *qw;
@@ -13,12 +25,8 @@ int main(int ac, char **av)
 	if (ft_philo_init(ac, av, qw) == -1)
 		p_error('2');
 	ft_create_process(qw);
+	sem_wait(qw->finish);
 	kill_process(qw);
-	sem_unlink("/forkk");
-	sem_unlink("/print");
-	sem_unlink("/died");
-	sem_close(qw->forks);
-	sem_close(qw->print);
-	sem_close(qw->died);
-	free (qw);
+	ft_clear(&qw);
+	return (0);
 }

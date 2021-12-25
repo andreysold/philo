@@ -6,14 +6,14 @@ HEADER = philo.h
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -ggdb3
 
 all : $(NAME)
 
 $(NAME):
 	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
-%.o: %.		$(HEADER)
+%.o: %.c		$(HEADER)
 	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 clean: 

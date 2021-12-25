@@ -86,6 +86,8 @@ int ft_philo_init(int ac, char **av, t_qw *qw)
     qw->print = sem_open("/print", O_CREAT | O_EXCL, S_IRWXU, 1);
     sem_unlink("/died");
     qw->died = sem_open("/died", O_CREAT | O_EXCL, S_IRWXU, 1);
+    sem_unlink("/finishh");
+    qw->finish = sem_open("/finishh", O_CREAT | O_EXCL, S_IRWXU, 0);
     if (qw->forks == SEM_FAILED || qw->print == SEM_FAILED
      || qw->died == SEM_FAILED || qw->ptr == NULL)
         return (-1);

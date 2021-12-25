@@ -21,21 +21,11 @@ int check_count_eat(t_qw *f)
 void    kill_process(t_qw *g)
 {
     int i;
-    int ret;
 
     i = 0;
     while (i < g->num_phil)
     {
-        waitpid(-1, &ret, 0);
-        if (ret == 0)
-        {
-            i = 0;
-            while (i < g->num_phil)
-            {
-                kill(g->ptr[i].pid, SIGKILL);
-                i++;
-            }
-        }
+        kill(g->ptr[i].pid, SIGKILL);
         i++;
     }
 }
