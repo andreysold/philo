@@ -6,11 +6,11 @@
 /*   By: galetha <galetha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:03:55 by galetha           #+#    #+#             */
-/*   Updated: 2021/12/26 15:06:45 by galetha          ###   ########.fr       */
+/*   Updated: 2021/12/27 12:28:09 by galetha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 int	ft_atoi(const char *str)
 {

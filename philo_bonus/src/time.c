@@ -6,11 +6,11 @@
 /*   By: galetha <galetha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:05:11 by galetha           #+#    #+#             */
-/*   Updated: 2021/12/26 15:12:25 by galetha          ###   ########.fr       */
+/*   Updated: 2021/12/27 12:28:14 by galetha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 int	ft_get_time(void)
 {

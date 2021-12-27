@@ -6,11 +6,11 @@
 /*   By: galetha <galetha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:04:57 by galetha           #+#    #+#             */
-/*   Updated: 2021/12/26 15:13:08 by galetha          ###   ########.fr       */
+/*   Updated: 2021/12/27 12:28:17 by galetha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 int	check_count_eat(t_qw *f)
 {

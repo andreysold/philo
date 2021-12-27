@@ -1,31 +1,30 @@
 NAME = philo_bonus
 
-SRC =	./src/main.c\
-	 	./src/init_bonus.c\
+FLAGS = -I./includes -Wall -Wextra -Werror
+
+SRC = ./src/main.c\
 		./src/actions_bonus.c\
+		./src/init_bonus.c\
 		./src/time.c\
 		./src/utils_bonus.c\
 
-HEADER = philo.h
+OBJ = $(patsubst %.c,%.o,$(SRC))
 
-CC = gcc
+all :
+	@make $(NAME)
 
-FLAGS = -Wall -Wextra -Werror
+$(NAME): $(OBJ)
+	gcc -o $(NAME) $(OBJ)
 
-all : $(NAME)
+%.o : %.c includes
+	gcc $(FLAGS) -c $< -o $@
 
-$(NAME):
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+clean :
+	@rm -f $(OBJ)
 
-%.o: %.c		$(HEADER)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+fclean : clean
+	@rm -f $(NAME)
 
-clean: 
-	@rm -f *.o
+re : fclean all
 
-fclean: clean
-		@rm -f $(NAME)
-
-re: fclean all
-
-.PHONY : all clean fclean re 
+.PHONY : all clean fclean re
