@@ -1,31 +1,30 @@
 NAME = philo
 
-SRC = 	./src/main.c\
-	 	./src/init.c\
+FLAGS = -I./includes -Wall -Wextra -Werror
+
+SRC = ./src/philo.c\
 		./src/actions.c\
+		./src/init.c\
 		./src/times.c\
 		./src/waiter.c\
 
-HEADER = philo.h
+OBJ = $(patsubst %.c,%.o,$(SRC))
 
-CC = gcc
+all :
+	@make $(NAME)
 
-FLAGS = -Wall -Wextra -Werror 
+$(NAME): $(OBJ)
+	gcc -o $(NAME) $(OBJ)
 
-all : $(NAME)
+%.o : %.c includes
+	gcc $(FLAGS) -c $< -o $@
 
-$(NAME):
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+clean :
+	@rm -f $(OBJ)
 
-%.o: %.		$(HEADER)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+fclean : clean
+	@rm -f $(NAME)
 
-clean: 
-	@rm -f *.o
+re : fclean all
 
-fclean: clean
-		@rm -f $(NAME)
-
-re: fclean all
-
-.PHONY : all clean fclean re 
+.PHONY : all clean fclean re

@@ -6,11 +6,11 @@
 /*   By: galetha <galetha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:06:27 by galetha           #+#    #+#             */
-/*   Updated: 2021/12/26 14:23:14 by galetha          ###   ########.fr       */
+/*   Updated: 2021/12/27 12:03:07 by galetha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	catch_forks(t_philo *g)
 {

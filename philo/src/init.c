@@ -6,11 +6,11 @@
 /*   By: galetha <galetha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 14:06:37 by galetha           #+#    #+#             */
-/*   Updated: 2021/12/26 14:28:54 by galetha          ###   ########.fr       */
+/*   Updated: 2021/12/27 12:03:04 by galetha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	ft_init_forks(t_g *g, int i)
 {
