@@ -44,7 +44,6 @@ void	p_error(char c)
 		printf("Incorrect args\n");
 	else if (c == '2')
 		printf("Dont allocate memmory");
-	exit (-1);
 }
 
 void	catch_r(t_philo	*g)

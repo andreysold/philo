@@ -76,27 +76,27 @@ int	phil_init(t_g *g, char **av, int ac)
 int	parse_arg(char **av, int ac)
 {
 	int	i;
-
-	i = 0;
-	if (!(ac == 5 || ac == 6))
+	int j;
+	
+	if (ac < 5 || ac > 6 || ft_atoi(av[1]) > 200
+		|| ft_atoi(av[1]) < 1 || ft_atoi(av[2]) < 60
+		|| ft_atoi(av[3]) < 60 || ft_atoi(av[4]) < 60)
 		return (-1);
-	i = ft_atoi(av[1]);
-	if (i <= 0 || i > 200)
+	if (ac == 6 && ft_atoi(av[5]) < 1)
 		return (-1);
-	i = ft_atoi(av[2]);
-	if (i <= 0 || i < 60)
-		return (-1);
-	i = ft_atoi(av[3]);
-	if (i <= 0 || i < 60)
-		return (-1);
-	i = ft_atoi(av[4]);
-	if (i <= 0 || i < 60)
-		return (-1);
-	if (ac == 6)
-		i = ft_atoi(av[5]);
-	if (i <= 0)
-		return (-1);
-	return (1);
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] < '0' || av[i][j] > '9')
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	ft_atoi(const char *str)
